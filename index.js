@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const LeadData = require("./models/LeadData");
 const addItem = require("./routes/addItem")
 const cors = require("cors");
+require("dotenv").config()
 const preprocessData = require("./lib/utils").preprocessData
 
 
@@ -25,7 +26,7 @@ mongoose.connect("mongodb+srv://root:root@cluster0.tujj06w.mongodb.net/testDB?re
 const app = express();
 app.use("/addData",addItem)
 
-const port = 7000;
+const port = 7000||process.env.PORT;
 
 app.use(express.json());
 app.use(express.urlencoded({extended:true}))
